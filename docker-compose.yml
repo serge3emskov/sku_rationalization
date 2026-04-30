@@ -1,7 +1,3 @@
---- "C:\\serge\\sku_rationalization\\docker-compose.yml" (原始)
-
-
-+++ "C:\\serge\\sku_rationalization\\docker-compose.yml" (修改后)
 version: '3.8'
 
 services:
