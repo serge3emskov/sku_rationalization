@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  sku-dashboard:
+    build:
+      context: .
+      dockerfile: dockerfile.txt
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./app.py:/app/app.py
+    environment:
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+    restart: unless-stopped

@@ -1,20 +1,79 @@
-# Same as .dockerignore plus:
-# Environment
+```
+# Docker related
+.dockerenv
+docker-compose.override.yml
+*.dockerfile
+Dockerfile.*
+
+# Environment variables
 .env
-.venv/
+.env.local
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
 venv/
-ENV/
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.coverage
+coverage/
 
-# Streamlit secrets
-.streamlit/secrets.toml
+# Build artifacts
+dist/
+build/
+target/
+*.pyc
+*.class
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.a
+*.out
 
-# Local config overrides
-.streamlit/config.local.toml
-
-# Jupyter
-.ipynb_checkpoints/
-*.ipynb
-
-# OS
+# OS generated files
 .DS_Store
 Thumbs.db
+*.swp
+*.swo
+*.tmp
+
+# Logs
+*.log
+
+# IDE specific
+.vscode/
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Compression files
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
+```
