@@ -1,59 +1,51 @@
 ```
-# Docker related
-.dockerenv
-docker-compose.override.yml
-*.dockerfile
-Dockerfile.*
-
-# Environment variables
-.env
-.env.local
-.env.*
-!.env.example
-
 # Dependencies
 node_modules/
 venv/
 .venv/
 __pycache__/
-*.egg-info/
-.pytest_cache/
 .mypy_cache/
-.coverage
-coverage/
-
-# Build artifacts
-dist/
-build/
+.pytest_cache/
+.julia/
+zig*/
 target/
+.gradle/
+
+# Compiled files
 *.pyc
 *.class
 *.o
-*.obj
 *.exe
 *.dll
 *.so
 *.a
+*.obj
 *.out
 
-# OS generated files
-.DS_Store
-Thumbs.db
-*.swp
-*.swo
+# Build artifacts
+dist/
+build/
+coverage/
+htmlcov/
+*.log
 *.tmp
 
-# Logs
-*.log
+# Environment
+.env
+.env.local
+*.env.*
 
-# IDE specific
+# Editors
 .vscode/
 .idea/
-*.iml
-*.ipr
-*.iws
+*.swp
+*.swo
 
-# Compression files
+# System
+.DS_Store
+Thumbs.db
+
+# Compressed files
 *.zip
 *.gz
 *.tar
@@ -72,8 +64,4 @@ Thumbs.db
 *.Z
 *.lz
 *.lzo
-*.tar.gz
-*.tar.bz2
-*.tar.xz
-*.tar.zst
 ```
