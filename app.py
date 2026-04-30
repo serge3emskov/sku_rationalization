@@ -337,21 +337,38 @@ with tab3:
     
     with col_exp2:
         if st.button("📄 Сформировать отчёт для руководства"):
-            report = f"""# Отчёт по оптимизации ассортимента
+            # Проверяем наличие колонки recommendation
+            if 'recommendation' in df_display.columns:
+                exit_count = (df_display['recommendation']=='EXIT').sum()
+                review_count = (df_display['recommendation']=='REVIEW_PRICING').sum()
+                seasonal_count = (df_display['recommendation']=='SEASONAL').sum()
+                
+                exit_df = df_display[df_display['recommendation']=='EXIT'].head(10)[['sku_id','category','reason']]
+                report_text = f"""# Отчёт по оптимизации ассортимента
 Дата: {pd.Timestamp.now().strftime('%Y-%m-%d')}
 Всего проанализировано SKU: {len(df_filtered)}
 
 ## Рекомендации:
-- К выводу: {(df_display['recommendation']=='EXIT').sum()} позиций
-- Требуют пересмотра: {(df_display['recommendation']=='REVIEW_PRICING').sum()} позиций
-- Сезонные: {(df_display['recommendation']=='SEASONAL').sum()} позиций
+- К выводу: {exit_count} позиций
+- Требуют пересмотра: {review_count} позиций
+- Сезонные: {seasonal_count} позиций
 
 ## Топ-10 кандидатов на вывод:
-{df_display[df_display['recommendation']=='EXIT'].head(10)[['sku_id','category','reason']].to_markdown(index=False)}
+{exit_df.to_markdown(index=False)}
 
 *Сформировано автоматически в SKU Rationalization Dashboard*
 """
-            st.download_button("📥 Скачать отчёт (MD)", report, "assortment_report.md", "text/markdown")
+            else:
+                report_text = f"""# Отчёт по оптимизации ассортимента
+Дата: {pd.Timestamp.now().strftime('%Y-%m-%d')}
+Всего проанализировано SKU: {len(df_filtered)}
+
+## Статус:
+Кластеризация ещё не выполнена. Пожалуйста, перейдите на вкладку "Кластеризация" и запустите анализ.
+
+*Сформировано автоматически в SKU Rationalization Dashboard*
+"""
+            st.download_button("📥 Скачать отчёт (MD)", report_text, "assortment_report.md", "text/markdown")
 
 # ======================
 # TAB 4: SETTINGS & RULES
