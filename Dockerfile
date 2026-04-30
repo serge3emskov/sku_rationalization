@@ -24,7 +24,6 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 
 # Copy application
 COPY app.py .
-COPY .streamlit/config.toml .streamlit/ 2>/dev/null || true
 
 # Create non-root user for security
 RUN useradd -m -u 1000 streamlit && chown -R streamlit:streamlit /app
