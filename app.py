@@ -198,11 +198,16 @@ with tab1:
     
     col_a, col_b = st.columns(2)
     with col_a:
+        # Проверяем наличие колонки recommendation перед использованием
+        hover_cols = ['sku_id']
+        if 'recommendation' in df_filtered.columns:
+            hover_cols.append('recommendation')
+        
         fig_scatter = px.scatter(
             df_filtered.head(2000),  # ограничиваем для производительности
             x='turnover_days', y='margin_pct',
             color='category', size='revenue_12m',
-            hover_data=['sku_id', 'recommendation'],
+            hover_data=hover_cols,
             title="Маржа vs Оборачиваемость",
             template='plotly_white',
             height=400
