@@ -314,7 +314,7 @@ with tab3:
     available_cols = [c for c in display_cols if c in df_display.columns]
     
     st.dataframe(
-        df_display[available_cols].style.applymap(
+        df_display[available_cols].style.map(
             lambda x: 'background-color: #f8d7da' if x == 'EXIT' else 
                      ('background-color: #fff3cd' if 'REVIEW' in str(x) else ''),
             subset=['recommendation']
