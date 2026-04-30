@@ -313,12 +313,18 @@ with tab3:
                    'turnover_days', 'recommendation', 'reason']
     available_cols = [c for c in display_cols if c in df_display.columns]
     
-    st.dataframe(
-        df_display[available_cols].style.map(
+    # Применяем стилизацию только если колонка recommendation существует
+    if 'recommendation' in df_display.columns:
+        styled_df = df_display[available_cols].style.map(
             lambda x: 'background-color: #f8d7da' if x == 'EXIT' else 
                      ('background-color: #fff3cd' if 'REVIEW' in str(x) else ''),
             subset=['recommendation']
-        ),
+        )
+    else:
+        styled_df = df_display[available_cols]
+    
+    st.dataframe(
+        styled_df,
         use_container_width=True,
         height=400
     )
