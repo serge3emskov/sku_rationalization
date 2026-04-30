@@ -2,6 +2,14 @@ version: '3.8'
 
 services:
   app:
+--- "C:\\serge\\sku_rationalization\\docker-compose.yml" (原始)
+
+
++++ "C:\\serge\\sku_rationalization\\docker-compose.yml" (修改后)
+version: '3.8'
+
+services:
+  sku-dashboard:
     build:
       context: .
       dockerfile: dockerfile.txt
@@ -12,4 +20,5 @@ services:
     environment:
       - STREAMLIT_SERVER_PORT=8501
       - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+    restart: unless-stopped
     restart: unless-stopped
